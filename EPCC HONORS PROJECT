@@ -1,0 +1,214 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beyond the Prize: Women Writers & Literary Recognition</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background-color: #fff9f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #e63946;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #f1c40f;
+    }
+    nav a, nav .dropdown {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+    nav a:hover, nav .dropdown:hover span {
+      color: #e63946;
+      text-decoration: underline;
+    }
+    nav a.active {
+      background: #e63946;
+      color: #fff !important;
+    }
+    nav .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fff;
+      min-width: 200px;
+      top: 100%;
+      left: 0;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+    nav .dropdown-content a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #333;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    nav .dropdown-content a:hover {
+      background: #f1c40f;
+      color: #e63946;
+    }
+    nav .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      flex: 1;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+    }
+    img.placeholder {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 1rem 0;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: linear-gradient(135deg, #e63946, #f1c40f);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    footer p {
+      margin: 0.3rem 0;
+    }
+    footer em {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Beyond the Prize</h1>
+    <p>Exploring how women authors are represented in major literary awards</p>
+  </header>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#awards">Awards Data</a>
+    <div class="dropdown">
+      <span>Author Spotlights ▾</span>
+      <div class="dropdown-content">
+        <a href="#morrison">Toni Morrison</a>
+        <a href="#atwood">Margaret Atwood</a>
+        <a href="#overlooked">Overlooked Authors</a>
+      </div>
+    </div>
+    <a href="#themes">Themes & Impact</a>
+    <a href="#sources">Sources</a>
+  </nav>
+
+  <section id="home">
+    <h2>Welcome</h2>
+    <p>[Placeholder for introduction text about why women’s representation in literary awards matters]</p>
+    <img src="https://placehold.co/800x400?text=Collage+of+Women+Authors" alt="Women Authors Collage" class="placeholder"/>
+  </section>
+
+  <section id="awards">
+    <h2>Awards Data</h2>
+    <p>[Placeholder for explanation of trends and data analysis]</p>
+    <canvas id="awardsChart"></canvas>
+    <img src="https://placehold.co/800x400?text=Timeline+of+Literary+Awards" alt="Timeline Placeholder" class="placeholder"/>
+  </section>
+
+  <section id="morrison">
+    <h2>Toni Morrison</h2>
+    <img src="https://placehold.co/400x500?text=Toni+Morrison" alt="Toni Morrison" class="placeholder"/>
+    <p>[Placeholder for analysis of Toni Morrison’s *Beloved* and her recognition]</p>
+  </section>
+
+  <section id="atwood">
+    <h2>Margaret Atwood</h2>
+    <img src="https://placehold.co/400x500?text=Margaret+Atwood" alt="Margaret Atwood" class="placeholder"/>
+    <p>[Placeholder for analysis of Atwood’s *The Handmaid’s Tale* and its recognition]</p>
+  </section>
+
+  <section id="overlooked">
+    <h2>Overlooked Authors</h2>
+    <img src="https://placehold.co/400x500?text=Zora+Neale+Hurston" alt="Zora Neale Hurston" class="placeholder"/>
+    <p>[Placeholder for discussion of overlooked women authors like Zora Neale Hurston and their impact]</p>
+  </section>
+
+  <section id="themes">
+    <h2>Themes & Impact</h2>
+    <p>[Placeholder for discussion of themes like recognition, canon formation, gender bias]</p>
+    <img src="https://placehold.co/800x400?text=Books+by+Men+vs+Women" alt="Books Comparison" class="placeholder"/>
+  </section>
+
+  <section id="sources">
+    <h2>Sources</h2>
+    <p>[Placeholder for MLA citations and scholarly sources list]</p>
+  </section>
+
+  <footer>
+    <p>Created by Jackeline Lopez — ENGL 1302 Honors Project</p>
+    <p><em>“For most of history, Anonymous was a woman.” — Virginia Woolf</em></p>
+  </footer>
+
+  <script>
+    const ctx = document.getElementById('awardsChart').getContext('2d');
+    const awardsChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Nobel', 'Pulitzer', 'Booker', 'National Book Award'],
+        datasets: [{
+          label: 'Women Winners',
+          data: [17, 31, 18, 22],
+          backgroundColor: '#e63946'
+        }, {
+          label: 'Men Winners',
+          data: [103, 89, 35, 54],
+          backgroundColor: '#f1c40f'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' }
+        }
+      }
+    });
+
+    // Highlight active nav link on click
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>   
+
+
+
